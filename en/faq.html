@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Shieldon · Shieldon - An anti-scraping PHP Library</title>
+        <title>FAQ · Shieldon - An anti-scraping PHP Library</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -66,6 +66,8 @@
 
     
     
+    <link rel="prev" href="implementation.html" />
+    
 
     </head>
     <body>
@@ -93,7 +95,7 @@
   
   
 
-<li class="chapter active" data-level="1.1" data-path="./">
+<li class="chapter " data-level="1.1" data-path="./">
   
   <a href="./">
     
@@ -151,7 +153,7 @@
     
 </li>
 
-<li class="chapter " data-level="1.3" data-path="faq.html">
+<li class="chapter active" data-level="1.3" data-path="faq.html">
   
   <a href="faq.html">
     
@@ -774,7 +776,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Shieldon</a>
+        <a href="." >FAQ</a>
     </h1>
 </div>
 
@@ -789,29 +791,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="shieldon">Shieldon</h1>
-<p><img src="https://i.imgur.com/G4xpugB.png" alt=""></p>
-<p><a href="https://travis-ci.org/terrylinooo/shieldon" target="_blank"><img src="https://travis-ci.org/terrylinooo/shieldon.svg?branch=master" alt="Build Status"></a> <a href="https://codecov.io/gh/terrylinooo/shieldon" target="_blank"><img src="https://img.shields.io/codecov/c/github/terrylinooo/shieldon.svg" alt="codecov"></a> <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a> </p>
-<p>Shieldon, a PHP library that provides anti-scraping and online session control for your web application. As if you are using a shield on your web applicaion to fight against bad-behavior bots, crawlers or vulnerability scanning and so on.</p>
-<p><strong>Project URL</strong></p>
+                                <h1 id="faq">FAQ</h1>
+<p>If you have any question please post it on <a href="https://stackoverflow.com/" target="_blank">stackoverflow</a>, if you have found any bug, please post it to <a href="https://github.com/terrylinooo/shieldon/issues" target="_blank">issue forum</a> of Shieldon&apos;s repository.</p>
 <ul>
-<li><a href="https://github.com/terrylinooo/shieldon" target="_blank">https://github.com/terrylinooo/shieldon</a></li>
+<li><a href="#faq-1">Can I limit session number for only a specific page?</a></li>
+<li><a href="#faq-2">How do I block all IP addresses for a specific URL?</a></li>
+<li><a href="#faq-3">What is the default login and password for Firewall Panel?</a></li>
+<li><a href="#faq-4">Can Shieldon Firewall truly mitigate DDOS attack?</a></li>
 </ul>
-<h2 id="screenshots">Screenshots</h2>
-<h3 id="dialog">Dialog</h3>
-<h4 id="temporarily-ban-a-user">Temporarily Ban a User</h4>
-<p>When the users or robots are trying to view many your web pages in a short period of time, they will temporarily get banned. Get unbanned by solving a Catpcha.</p>
-<p><img src="https://i.imgur.com/rlsEwSG.png" alt="Firewall Dialog 1"></p>
-<h4 id="permanently-ban-a-user">Permanently Ban a User</h4>
-<p>When a user has been permanently banned.</p>
-<p><img src="https://i.imgur.com/Qy1sADw.png" alt="Firewall Dialog 2"></p>
-<h4 id="online-session-control">Online Session Control</h4>
-<p><img src="https://i.imgur.com/cAOKIY8.png" alt="Firewall Dialog 3"></p>
-<p>When a user has reached the online session limit.</p>
-<h2 id="license">License</h2>
-<p>MIT</p>
-<h2 id="author">Author</h2>
-<p>Shieldon library is brought to you by <a href="https://terryl.in" target="_blank">Terry L.</a> from Taiwan.</p>
+<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+<div id="faq-1"></div>
+
+<h3 id="can-i-limit-session-number-for-only-a-specific-page">Can I limit session number for only a specific page?</h3>
+<p>The answer is <strong>YES</strong>, but you have to turn off <code>Online Session Limit</code> in Firewall Panel, because its scope is global - it cannot be used on the same data pool.</p>
+<p>After turning <code>Online Session Limit</code> off, you can use Shieldon&apos;s public API, for example as the following code:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">if</span> (strpos($_SERVER[<span class="hljs-string">&apos;REQUEST_URI&apos;</span>], <span class="hljs-string">&apos;faq/online-session-limit.html&apos;</span>) !== <span class="hljs-keyword">false</span>) {
+    $firewall-&gt;getShieldon()-&gt;limitSession(<span class="hljs-number">5</span>, <span class="hljs-number">300</span>);
+}
+</code></pre>
+<p><a href="https://shieldon.io/en/faq/online-session-limit.html" target="_blank">This page</a> is limiting the maximum user number of <strong>5</strong>, and each user has <strong>300</strong> seconds in viewing this page.</p>
+<p>When entering this page and the user number has reached the limitation, the dialog that is similar to following screenshot will be showed to you. </p>
+<p><img src="https://i.imgur.com/cAOKIY8.png" alt=""></p>
+<div id="faq-2"></div>
+
+<h3 id="how-do-i-block-all-ip-addresses-for-a-specific-url">How do I block all IP addresses for a specific URL?</h3>
+<p>I do not put that <code>block all</code> feature into Firewall Panel because of preventing some smart guys block all IP addresses of URL <code>/</code>. This is block all URLs including the entry of Firewall Panel. I suggest you use IP manager instead and set up a needed IP range.</p>
+<p>If you want to block all IP addresses for a specific URL , the following code will help you.</p>
+<pre><code class="lang-php"><span class="hljs-comment">// Put this code before $firewall-&gt;run();</span>
+<span class="hljs-keyword">if</span> (strpos($_SERVER[<span class="hljs-string">&apos;REQUEST_URI&apos;</span>], <span class="hljs-string">&apos;example/block-all.html&apos;</span>) !== <span class="hljs-keyword">false</span>) {
+    $firewall-&gt;getShieldon()-&gt;getComponent(<span class="hljs-string">&apos;Ip&apos;</span>)-&gt;denyAll();
+}
+</code></pre>
+<p><a href="https://shieldon.io/en/faq/block-all.html" target="_blank">This is an example page</a> that blocks all IP addresses from the Internet.</p>
+<p>When a user has been blocked, they will see the dialog just like the screenshot below.</p>
+<p><img src="https://i.imgur.com/Qy1sADw.png" alt=""></p>
+<div id="faq-3"></div>
+
+<h3 id="what-is-the-default-login-and-password-for-firewall-panel">What is the default login and password for Firewall Panel?</h3>
+<p>The default login is <code>shieldon_user</code> and <code>password</code> is <code>shieldon_pass</code>. After logging in the Firewall Panel, the first thing you need to do is to change the login and password.</p>
+<div id="faq-4"></div>
+
+<h3 id="can-shieldon-firewall-truly-mitigate-ddos-attack">Can Shieldon Firewall truly mitigate DDOS attack?</h3>
+<p>For the small scale of HTTP-type DDOS attacks, my answer is <strong>YES</strong>, but the real situation depends on many factors such as the bandwidth, hardware level, system adjustment, code quality, and so on.</p>
+<p>Let me take a simple example, assuming your website has an average page size of 3 MB, and the bandwidth of your server is 100 Mbps, your server can actually  handle megabyte-per-second is <code>12.5 MB/s</code>, If someone would like to attack your webiste maliciously, do you think how many attacking sources can block your server? Not to mention the heavy loading to the MySQL connection.</p>
+<p>Shieldon Firewall interrupts the malicious connection, returning a CAPTCHA page size that it is less than 50 KB, stopping executing PHP scripts - no more MySQL connection - Shieldon Firewall saves memory and CPU usage when your website is under attack - but, it is just a way to mitigate HTTP-type DDOS attack, not a final solution.</p>
 
                                 
                                 </section>
@@ -839,6 +862,10 @@
 
             
                 
+                <a href="implementation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Implementing">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
                 
             
         
@@ -847,7 +874,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Shieldon","level":"1.1","depth":1,"next":{"title":"Shieldon Firewall","level":"1.2","depth":1,"ref":"","articles":[{"title":"Intoduction","level":"1.2.1","depth":2,"path":"introduction.md","ref":"introduction.md","articles":[]},{"title":"Implementing","level":"1.2.2","depth":2,"path":"implementation.md","ref":"implementation.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["layout","toggle-chapters","github","add-js-css"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/terrylinooo/shieldon"},"search":{},"layout":{"footerPath":"_layouts/website_footer.html"},"add-js-css":{"js":["./my/my.js"],"css":["./my/my.css"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Shieldon - An anti-scraping PHP Library","language":"en","gitbook":"*"},"file":{"path":"README.md","mtime":"2020-07-31T03:36:35.844Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-31T05:06:08.373Z"},"basePath":".","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"FAQ","level":"1.3","depth":1,"next":{"title":"Shieldon Kernel","level":"1.4","depth":1,"ref":"","articles":[{"title":"Getting Started","level":"1.4.1","depth":2,"path":"docs/getting-started.md","ref":"docs/getting-started.md","articles":[{"title":"Installation","level":"1.4.1.1","depth":3,"anchor":"#installation","path":"docs/getting-started.md","ref":"docs/getting-started.md#installation","articles":[]},{"title":"How to Use","level":"1.4.1.2","depth":3,"anchor":"#how-to-use","path":"docs/getting-started.md","ref":"docs/getting-started.md#how-to-use","articles":[]}]},{"title":"Configuration","level":"1.4.2","depth":2,"path":"docs/configuration.md","ref":"docs/configuration.md","articles":[]},{"title":"API","level":"1.4.3","depth":2,"path":"docs/api.md","ref":"docs/api.md","articles":[{"title":"setDriver","level":"1.4.3.1","depth":3,"anchor":"#setdriver","path":"docs/api.md","ref":"docs/api.md#setdriver","articles":[]},{"title":"setComponent","level":"1.4.3.2","depth":3,"anchor":"#setcomponent","path":"docs/api.md","ref":"docs/api.md#setcomponent","articles":[]},{"title":"setProperty","level":"1.4.3.3","depth":3,"anchor":"#setproperty","path":"docs/api.md","ref":"docs/api.md#setproperty","articles":[]},{"title":"setProperties","level":"1.4.3.4","depth":3,"anchor":"#setproperties","path":"docs/api.md","ref":"docs/api.md#setproperties","articles":[]},{"title":"setChannel","level":"1.4.3.5","depth":3,"anchor":"#setchannel","path":"docs/api.md","ref":"docs/api.md#setchannel","articles":[]},{"title":"setCaptcha","level":"1.4.3.6","depth":3,"anchor":"#setcaptcha","path":"docs/api.md","ref":"docs/api.md#setcaptcha","articles":[]},{"title":"setFilters","level":"1.4.3.7","depth":3,"anchor":"#setfilters","path":"docs/api.md","ref":"docs/api.md#setfilters","articles":[]},{"title":"setIp","level":"1.4.3.8","depth":3,"anchor":"#setip","path":"docs/api.md","ref":"docs/api.md#setip","articles":[]},{"title":"outputJsSnippet","level":"1.4.3.9","depth":3,"anchor":"#outputjssnippet","path":"docs/api.md","ref":"docs/api.md#outputjssnippet","articles":[]},{"title":"captchaResponse","level":"1.4.3.10","depth":3,"anchor":"#captcharesponse","path":"docs/api.md","ref":"docs/api.md#captcharesponse","articles":[]},{"title":"setView","level":"1.4.3.11","depth":3,"anchor":"#setview","path":"docs/api.md","ref":"docs/api.md#setview","articles":[]},{"title":"createDatabase","level":"1.4.3.12","depth":3,"anchor":"#createdatabase","path":"docs/api.md","ref":"docs/api.md#createdatabase","articles":[]},{"title":"ban","level":"1.4.3.13","depth":3,"anchor":"#ban","path":"docs/api.md","ref":"docs/api.md#ban","articles":[]},{"title":"unban","level":"1.4.3.14","depth":3,"anchor":"#unban","path":"docs/api.md","ref":"docs/api.md#unban","articles":[]},{"title":"limitSession","level":"1.4.3.15","depth":3,"anchor":"#limitsession","path":"docs/api.md","ref":"docs/api.md#limitsession","articles":[]},{"title":"run","level":"1.4.3.16","depth":3,"anchor":"#run","path":"docs/api.md","ref":"docs/api.md#run","articles":[]}]},{"title":"Driver","level":"1.4.4","depth":2,"path":"docs/driver/index.md","ref":"docs/driver/index.md","articles":[{"title":"MySQL","level":"1.4.4.1","depth":3,"path":"docs/driver/mysql.md","ref":"docs/driver/mysql.md","articles":[]},{"title":"SQLite","level":"1.4.4.2","depth":3,"path":"docs/driver/sqlite.md","ref":"docs/driver/sqlite.md","articles":[]},{"title":"Redis","level":"1.4.4.3","depth":3,"path":"docs/driver/redis.md","ref":"docs/driver/redis.md","articles":[]},{"title":"File","level":"1.4.4.4","depth":3,"path":"docs/driver/file.md","ref":"docs/driver/file.md","articles":[]}]},{"title":"Component","level":"1.4.5","depth":2,"path":"docs/component/index.md","ref":"docs/component/index.md","articles":[{"title":"TrustedBot","level":"1.4.5.1","depth":3,"path":"docs/component/trustedbot.md","ref":"docs/component/trustedbot.md","articles":[]},{"title":"IP","level":"1.4.5.2","depth":3,"path":"docs/component/ip.md","ref":"docs/component/ip.md","articles":[]},{"title":"UserAgent","level":"1.4.5.3","depth":3,"path":"docs/component/useragent.md","ref":"docs/component/useragent.md","articles":[]},{"title":"Header","level":"1.4.5.4","depth":3,"path":"docs/component/header.md","ref":"docs/component/header.md","articles":[]},{"title":"Rdns","level":"1.4.5.5","depth":3,"path":"docs/component/rdns.md","ref":"docs/component/rdns.md","articles":[]}]},{"title":"CAPTCHA","level":"1.4.6","depth":2,"path":"docs/captcha/index.md","ref":"docs/captcha/index.md","articles":[{"title":"Google ReCaptcha","level":"1.4.6.1","depth":3,"path":"docs/captcha/recaptcha.md","ref":"docs/captcha/recaptcha.md","articles":[]},{"title":"Image Captcha","level":"1.4.6.2","depth":3,"path":"docs/captcha/image.md","ref":"docs/captcha/image.md","articles":[]}]},{"title":"Integration w/ Framework","level":"1.4.7","depth":2,"path":"docs/integration/index.md","ref":"docs/integration/index.md","articles":[{"title":"CodeIgniter","level":"1.4.7.1","depth":3,"path":"docs/integration/codeigniter.md","ref":"docs/integration/codeigniter.md","articles":[]},{"title":"Slim","level":"1.4.7.2","depth":3,"path":"docs/integration/slim.md","ref":"docs/integration/slim.md","articles":[]},{"title":"Laravel","level":"1.4.7.3","depth":3,"path":"docs/integration/laravel.md","ref":"docs/integration/laravel.md","articles":[]},{"title":"WordPress","level":"1.4.7.4","depth":3,"path":"docs/integration/wordpress.md","ref":"docs/integration/wordpress.md","articles":[]}]}]},"previous":{"title":"Implementing","level":"1.2.2","depth":2,"path":"implementation.md","ref":"implementation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["layout","toggle-chapters","github","add-js-css"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/terrylinooo/shieldon"},"search":{},"layout":{"footerPath":"_layouts/website_footer.html"},"add-js-css":{"js":["./my/my.js"],"css":["./my/my.css"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Shieldon - An anti-scraping PHP Library","language":"en","gitbook":"*"},"file":{"path":"faq.md","mtime":"2020-07-31T05:04:02.695Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-31T05:06:08.373Z"},"basePath":".","book":{"language":"en"}});
         });
     </script>
 </div>
