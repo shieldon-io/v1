@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Configuration · Shieldon - An anti-scraping PHP Library</title>
+        <title>Shieldon Kernel · Shieldon - An anti-scraping PHP Library</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="api.html" />
+    <link rel="next" href="getting-started.html" />
     
     
-    <link rel="prev" href="getting-started.html" />
+    <link rel="prev" href="../faq.html" />
     
 
     </head>
@@ -168,7 +168,7 @@
     
 </li>
 
-<li class="chapter " data-level="1.4" data-path="./">
+<li class="chapter active" data-level="1.4" data-path="./">
   
   <a href="./">
     
@@ -227,7 +227,7 @@
     
 </li>
 
-<li class="chapter active" data-level="1.4.2" data-path="configuration.html">
+<li class="chapter " data-level="1.4.2" data-path="configuration.html">
   
   <a href="configuration.html">
     
@@ -778,7 +778,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Configuration</a>
+        <a href=".." >Shieldon Kernel</a>
     </h1>
 </div>
 
@@ -793,164 +793,61 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="configuration">Configuration</h1>
-<p>You can adjust the setting when initializing Shieldon instance, or using <code>setProperty</code> or <code>setProperties</code> API later.</p>
-<p><em>Initializing</em></p>
-<pre><code class="lang-php">
-$config = [
-    <span class="hljs-string">&apos;time_unit_quota&apos;</span> =&gt; [
-        [<span class="hljs-string">&apos;s&apos;</span> =&gt; <span class="hljs-number">2</span>, <span class="hljs-string">&apos;m&apos;</span> =&gt; <span class="hljs-number">10</span>, <span class="hljs-string">&apos;h&apos;</span> =&gt; <span class="hljs-number">30</span>, <span class="hljs-string">&apos;d&apos;</span> =&gt; <span class="hljs-number">60</span>]
-    ]
-];
-
-$shieldon = <span class="hljs-keyword">new</span> \Shieldon\Shieldon($config);
-</code></pre>
-<p><em>setProperty</em></p>
-<pre><code class="lang-php">$shieldon-&gt;setProperty(<span class="hljs-string">&apos;time_unit_quota&apos;</span>, [
-    <span class="hljs-string">&apos;s&apos;</span> =&gt; <span class="hljs-number">2</span>, <span class="hljs-string">&apos;m&apos;</span> =&gt; <span class="hljs-number">10</span>, <span class="hljs-string">&apos;h&apos;</span> =&gt; <span class="hljs-number">30</span>, <span class="hljs-string">&apos;d&apos;</span> =&gt; <span class="hljs-number">60</span>
-]);
-</code></pre>
-<p><em>setProperties</em></p>
-<pre><code class="lang-php">
-$config = [
-    <span class="hljs-string">&apos;time_unit_quota&apos;</span> =&gt; [
-        [<span class="hljs-string">&apos;s&apos;</span> =&gt; <span class="hljs-number">2</span>, <span class="hljs-string">&apos;m&apos;</span> =&gt; <span class="hljs-number">10</span>, <span class="hljs-string">&apos;h&apos;</span> =&gt; <span class="hljs-number">30</span>, <span class="hljs-string">&apos;d&apos;</span> =&gt; <span class="hljs-number">60</span>]
-    ]
-];
-
-$shieldon-&gt;setProperties($config);
-</code></pre>
-<h2 id="default">Default</h2>
-<table>
-<thead>
-<tr>
-<th>key</th>
-<th>type</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>time_unit_quota</td>
-<td>array</td>
-<td><code>[&apos;s&apos; =&gt; 2, &apos;m&apos; =&gt; 10, &apos;h&apos; =&gt; 30, &apos;d&apos; =&gt; 60]</code></td>
-</tr>
-<tr>
-<td>time_reset_limit</td>
-<td>integer</td>
-<td>3600</td>
-</tr>
-<tr>
-<td>interval_check_referer</td>
-<td>integer</td>
-<td>5</td>
-</tr>
-<tr>
-<td>interval_check_session</td>
-<td>integer</td>
-<td>30</td>
-</tr>
-<tr>
-<td>limit_unusual_behavior</td>
-<td>array</td>
-<td><code>[&apos;cookie&apos; =&gt; 5, &apos;session&apos; =&gt; 5, &apos;referer&apos; =&gt; 10]</code></td>
-</tr>
-<tr>
-<td>cookie_name</td>
-<td>string</td>
-<td>ssjd</td>
-</tr>
-<tr>
-<td>cookie_domain</td>
-<td>string</td>
-<td>&quot;</td>
-</tr>
-</tbody>
-</table>
-<h3 id="timeunitquota">time_unit_quota</h3>
-<p>Setting the limits and quotas for your vistors on your website.</p>
-<p>You may check out your Google Analytics to find out how many page views per user is normal condition, then think about what is considered to <strong>bad behavior</strong> on your website.</p>
+                                <h1 id="shieldon-kernel">Shieldon Kernel</h1>
 <ul>
-<li>array</li>
+<li><a href="getting-started.html">Getting Started</a><pre><code>  - [Installation](getting-started.md#installation)
+  - [How to Use](getting-started.md#how-to-use)
+</code></pre><ul>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="api.html">API</a><ul>
+<li><a href="api.html#setdriver">setDriver</a></li>
+<li><a href="api.html#setcomponent">setComponent</a></li>
+<li><a href="api.html#setproperty">setProperty</a></li>
+<li><a href="api.html#setproperties">setProperties</a></li>
+<li><a href="api.html#setchannel">setChannel</a></li>
+<li><a href="api.html#setcaptcha">setCaptcha</a></li>
+<li><a href="api.html#setfilters">setFilters</a></li>
+<li><a href="api.html#setip">setIp</a></li>
+<li><a href="api.html#outputjssnippet">outputJsSnippet</a></li>
+<li><a href="api.html#captcharesponse">captchaResponse</a></li>
+<li><a href="api.html#setview">setView</a></li>
+<li><a href="api.html#createdatabase">createDatabase</a></li>
+<li><a href="api.html#ban">ban</a></li>
+<li><a href="api.html#unban">unban</a></li>
+<li><a href="api.html#limitsession">limitSession</a></li>
+<li><a href="api.html#run">run</a></li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>key</th>
-<th>value</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>s</td>
-<td>integer</td>
-<td>Page views per <strong>vistor</strong> per <strong>second</strong></td>
-</tr>
-<tr>
-<td>m</td>
-<td>integer</td>
-<td>Page views per <strong>vistor</strong> per <strong>minute</strong></td>
-</tr>
-<tr>
-<td>h</td>
-<td>integer</td>
-<td>Page views per <strong>vistor</strong> per <strong>hour</strong></td>
-</tr>
-<tr>
-<td>d</td>
-<td>integer</td>
-<td>Page views per <strong>vistor</strong> per <strong>day</strong></td>
-</tr>
-</tbody>
-</table>
-<h4 id="tips">Tips</h4>
-<ul>
-<li><p>If you just want to limit an user to view <code>100 pages</code> a day, just set <code>s</code>, <code>m</code>, <code>h</code> to a very high number, and set <code>d</code> to <code>100</code>.</p>
 </li>
-<li><p>To remember, when users reached the limit will just be banned temporaily, they can get unbanned by solving Captcha, so, do not set the values too loose, overwise it is no sense to use this library.</p>
+<li><a href="driver/">Driver</a><ul>
+<li><a href="driver/mysql.html">MySQL</a></li>
+<li><a href="driver/sqlite.html">SQLite</a></li>
+<li><a href="driver/redis.html">Redis</a></li>
+<li><a href="driver/file.html">File</a></li>
+</ul>
+</li>
+<li><a href="component/">Component</a><ul>
+<li><a href="component/trustedbot.html">TrustedBot</a></li>
+<li><a href="component/ip.html">IP</a></li>
+<li><a href="component/useragent.html">UserAgent</a></li>
+<li><a href="component/header.html">Header</a></li>
+<li><a href="component/rdns.html">Rdns</a></li>
+</ul>
+</li>
+<li><a href="captcha/">CAPTCHA</a><ul>
+<li><a href="captcha/recaptcha.html">Google ReCaptcha</a></li>
+<li><a href="captcha/image.html">Image Captcha</a></li>
+</ul>
+</li>
+<li><a href="integration/">Integration w/ Framework</a><ul>
+<li><a href="integration/codeigniter.html">CodeIgniter</a></li>
+<li><a href="integration/slim.html">Slim</a></li>
+<li><a href="integration/laravel.html">Laravel</a></li>
+<li><a href="integration/wordpress.html">WordPress</a></li>
+</ul>
 </li>
 </ul>
-<h3 id="timeresetlimit">time_reset_limit</h3>
-<p>Reset the filiters flagged number after how many seconds that <code>time_reset_limit</code> is set.</p>
-<h3 id="intervalcheckreferer">interval_check_referer</h3>
-<p>When an user first time visit to your website by entering URL on browser, the <code>HTTP_REFERER</code> is empty. After <code>interval_check_referer</code> seconds, Shieldon will start checking <code>HTTP_REFERER</code>.</p>
-<p><em>You can ignore this value.</em></p>
-<h3 id="intervalchecksession">interval_check_session</h3>
-<p>When an user first time visit to your website, after <code>interval_check_session</code> seconds, Shieldon will start checking <code>SESSION</code> cookie.</p>
-<h3 id="limitunusualbehavior">limit_unusual_behavior</h3>
-<p>Setting the limits and quotas of being flagged as unusual behavior for your vistors on your website.</p>
-<ul>
-<li>array</li>
+</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>key</th>
-<th>value</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>cookie</td>
-<td>integer</td>
-<td>Cookie generated by JavaScript.</td>
-</tr>
-<tr>
-<td>session</td>
-<td>integer</td>
-<td>PHP Session</td>
-</tr>
-<tr>
-<td>referer</td>
-<td>integer</td>
-<td>HTTP_REFERER</td>
-</tr>
-</tbody>
-</table>
-<h3 id="others">Others</h3>
-<p>Please ignore them.</p>
 
                                 
                                 </section>
@@ -978,12 +875,12 @@ $shieldon-&gt;setProperties($config);
 
             
                 
-                <a href="getting-started.html#how-to-use" class="navigation navigation-prev " aria-label="Previous page: How to Use">
+                <a href="../faq.html" class="navigation navigation-prev " aria-label="Previous page: FAQ">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="api.html" class="navigation navigation-next " aria-label="Next page: API">
+                <a href="getting-started.html" class="navigation navigation-next " aria-label="Next page: Getting Started">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -994,7 +891,7 @@ $shieldon-&gt;setProperties($config);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Configuration","level":"1.4.2","depth":2,"next":{"title":"API","level":"1.4.3","depth":2,"path":"docs/api.md","ref":"docs/api.md","articles":[{"title":"setDriver","level":"1.4.3.1","depth":3,"anchor":"#setdriver","path":"docs/api.md","ref":"docs/api.md#setdriver","articles":[]},{"title":"setComponent","level":"1.4.3.2","depth":3,"anchor":"#setcomponent","path":"docs/api.md","ref":"docs/api.md#setcomponent","articles":[]},{"title":"setProperty","level":"1.4.3.3","depth":3,"anchor":"#setproperty","path":"docs/api.md","ref":"docs/api.md#setproperty","articles":[]},{"title":"setProperties","level":"1.4.3.4","depth":3,"anchor":"#setproperties","path":"docs/api.md","ref":"docs/api.md#setproperties","articles":[]},{"title":"setChannel","level":"1.4.3.5","depth":3,"anchor":"#setchannel","path":"docs/api.md","ref":"docs/api.md#setchannel","articles":[]},{"title":"setCaptcha","level":"1.4.3.6","depth":3,"anchor":"#setcaptcha","path":"docs/api.md","ref":"docs/api.md#setcaptcha","articles":[]},{"title":"setFilters","level":"1.4.3.7","depth":3,"anchor":"#setfilters","path":"docs/api.md","ref":"docs/api.md#setfilters","articles":[]},{"title":"setIp","level":"1.4.3.8","depth":3,"anchor":"#setip","path":"docs/api.md","ref":"docs/api.md#setip","articles":[]},{"title":"outputJsSnippet","level":"1.4.3.9","depth":3,"anchor":"#outputjssnippet","path":"docs/api.md","ref":"docs/api.md#outputjssnippet","articles":[]},{"title":"captchaResponse","level":"1.4.3.10","depth":3,"anchor":"#captcharesponse","path":"docs/api.md","ref":"docs/api.md#captcharesponse","articles":[]},{"title":"setView","level":"1.4.3.11","depth":3,"anchor":"#setview","path":"docs/api.md","ref":"docs/api.md#setview","articles":[]},{"title":"createDatabase","level":"1.4.3.12","depth":3,"anchor":"#createdatabase","path":"docs/api.md","ref":"docs/api.md#createdatabase","articles":[]},{"title":"ban","level":"1.4.3.13","depth":3,"anchor":"#ban","path":"docs/api.md","ref":"docs/api.md#ban","articles":[]},{"title":"unban","level":"1.4.3.14","depth":3,"anchor":"#unban","path":"docs/api.md","ref":"docs/api.md#unban","articles":[]},{"title":"limitSession","level":"1.4.3.15","depth":3,"anchor":"#limitsession","path":"docs/api.md","ref":"docs/api.md#limitsession","articles":[]},{"title":"run","level":"1.4.3.16","depth":3,"anchor":"#run","path":"docs/api.md","ref":"docs/api.md#run","articles":[]}]},"previous":{"title":"How to Use","level":"1.4.1.2","depth":3,"anchor":"#how-to-use","path":"docs/getting-started.md","ref":"docs/getting-started.md#how-to-use","articles":[]},"dir":"ltr"},"config":{"plugins":["layout","toggle-chapters","github","add-js-css"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/terrylinooo/shieldon"},"search":{},"layout":{"footerPath":"_layouts/website_footer.html"},"add-js-css":{"js":["./my/my.js"],"css":["./my/my.css"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Shieldon - An anti-scraping PHP Library","language":"en","gitbook":"*"},"file":{"path":"docs/configuration.md","mtime":"2019-10-15T02:54:30.551Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-31T05:20:17.370Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Shieldon Kernel","level":"1.4","depth":1,"next":{"title":"Getting Started","level":"1.4.1","depth":2,"path":"docs/getting-started.md","ref":"docs/getting-started.md","articles":[{"title":"Installation","level":"1.4.1.1","depth":3,"anchor":"#installation","path":"docs/getting-started.md","ref":"docs/getting-started.md#installation","articles":[]},{"title":"How to Use","level":"1.4.1.2","depth":3,"anchor":"#how-to-use","path":"docs/getting-started.md","ref":"docs/getting-started.md#how-to-use","articles":[]}]},"previous":{"title":"FAQ","level":"1.3","depth":1,"path":"faq.md","ref":"faq.md","articles":[]},"dir":"ltr"},"config":{"plugins":["layout","toggle-chapters","github","add-js-css"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/terrylinooo/shieldon"},"search":{},"layout":{"footerPath":"_layouts/website_footer.html"},"add-js-css":{"js":["./my/my.js"],"css":["./my/my.css"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Shieldon - An anti-scraping PHP Library","language":"en","gitbook":"*"},"file":{"path":"docs/index.md","mtime":"2020-07-31T05:18:55.616Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-31T05:20:17.370Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
