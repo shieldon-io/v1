@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Laravel · Shieldon - An anti-scraping PHP Library</title>
+        <title>Yii · Shieldon - An anti-scraping PHP Library</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="symfony.html" />
+    <link rel="next" href="zend.html" />
     
     
-    <link rel="prev" href="../introduction.html" />
+    <link rel="prev" href="cakephp.html" />
     
 
     </head>
@@ -120,7 +120,7 @@
     <ul class="articles">
       
 
-<li class="chapter active" data-level="1.2.1" data-path="laravel.html">
+<li class="chapter " data-level="1.2.1" data-path="laravel.html">
   
   <a href="laravel.html">
     
@@ -172,7 +172,7 @@
     
 </li>
 
-<li class="chapter " data-level="1.2.5" data-path="yii.html">
+<li class="chapter active" data-level="1.2.5" data-path="yii.html">
   
   <a href="yii.html">
     
@@ -878,7 +878,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Laravel</a>
+        <a href=".." >Yii</a>
     </h1>
 </div>
 
@@ -893,76 +893,34 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="laravel">Laravel</h1>
-<p>This guide helps you get through the confusion of implementing Shieldon Firewall on your Laravel application. These tips are not the only way to make it, but also gives you some ideas.</p>
-<p>The following steps have been tested on Laravel 5 and 6.</p>
-<p><img src="https://i.imgur.com/mFa8Lws.png" alt="Firewall in Laravel Framework"></p>
+                                <h1 id="yii">Yii</h1>
+<p>In this guide, I will give you some idea about how to implement Shieldon Firewall on your Yii application.</p>
+<p><img src="https://i.imgur.com/B0cSroN.png" alt="Firewall in Yii Framework"></p>
 <h2 id="installation">Installation</h2>
 <p>Use PHP Composer:</p>
 <pre><code class="lang-php">composer <span class="hljs-keyword">require</span> shieldon/shieldon
 </code></pre>
-<p>Or, download it and include the Shieldon autoloader.</p>
-<pre><code class="lang-php"><span class="hljs-keyword">require</span> <span class="hljs-string">&apos;Shieldon/autoload.php&apos;</span>;
-</code></pre>
-<p>Implementing Shieldon Firewall on your Web Application is pretty easy by using Firewall Panel, and I highly recommend you choose this way.</p>
 <h2 id="implementing">Implementing</h2>
-<p>For Laravel lovers, you can choose <strong>Middleware</strong> or <strong>Bootstrap</strong> to implement Shieldon Firewall on your Web application. I prefer Bootstrap personally.</p>
-<h3 id="middleware">Middleware</h3>
-<h4 id="1--define-a-middleware">1.  Define a Middleware.</h4>
-<p>Define a middleware named <code>ShieldonFirewall</code></p>
-<pre><code class="lang-bash">php artisan make:middleware ShieldonFirewall
+<h3 id="yii-2">Yii 2</h3>
+<h4 id="1-before-initializing-kernal">1. Before initializing Kernal</h4>
+<p>In your <code>public/index.php</code>, before this line:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/../vendor/yiisoft/yii2/Yii.php&apos;</span>;
 </code></pre>
-<p>Add several lines in the <code>ShieldonFirewall</code> middleware class:</p>
-<pre><code class="lang-php">$firewall = <span class="hljs-keyword">new</span> \Shieldon\Firewall(storage_path(<span class="hljs-string">&apos;shieldon&apos;</span>));
-
-<span class="hljs-comment">// Pass Laravel CSRF Token to Captcha form.</span>
-$firewall-&gt;getShieldon()-&gt;setCaptcha(<span class="hljs-keyword">new</span> \Shieldon\Captcha\Csrf([
-    <span class="hljs-string">&apos;name&apos;</span> =&gt; <span class="hljs-string">&apos;_token&apos;</span>,
-    <span class="hljs-string">&apos;value&apos;</span> =&gt; csrf_token(),
-]));
-
-$firewall-&gt;restful();
-$firewall-&gt;run();
-</code></pre>
-<h4 id="2--register-a-middleware-alias">2.  Register a Middleware alias.</h4>
-<p>Modify <code>app/Http/Kernel.php</code> and add this line in <code>$routeMiddleware</code> property.</p>
-<pre><code class="lang-php"><span class="hljs-string">&apos;firewall&apos;</span> =&gt; \App\Http\Middleware\ShieldonFirewall::class,
-</code></pre>
-<h4 id="3--defind-a-route-for-firewall-panel">3.  Defind a Route for Firewall Panel.</h4>
-<p>We need a controller to get into Shieldon firewall controll panel, so that..</p>
-<pre><code class="lang-php">Route::any(<span class="hljs-string">&apos;/your/secret/place/&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
-    $firewall = \Shieldon\Container::get(<span class="hljs-string">&apos;firewall&apos;</span>);
-    $controlPanel = <span class="hljs-keyword">new</span> \Shieldon\FirewallPanel($firewall);
-    $controlPanel-&gt;csrf(<span class="hljs-string">&apos;_token&apos;</span>, csrf_token());
-    $controlPanel-&gt;entry();
-})-&gt;middleware(<span class="hljs-string">&apos;firewall&apos;</span>);
-</code></pre>
-<p>Shieldon Firewall will start watching your website if it get enabled in <code>Deamon</code> setting section.</p>
-<h4 id="4--assign-firewall-middleware-to-a-route">4.  Assign <code>firewall</code> middleware to a route.</h4>
-<p>Assign <code>firewall</code> middleware to any route you would like to protect. For example:</p>
-<pre><code class="lang-php">Route::get(<span class="hljs-string">&apos;/&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">return</span> view(<span class="hljs-string">&apos;welcome&apos;</span>);
-})-&gt;middleware(<span class="hljs-string">&apos;firewall&apos;</span>);
-</code></pre>
-<h3 id="bootstrap">Bootstrap</h3>
-<p>This is what I said the preferred way, because that less steps and it will avoid possible 
-conflicts with Laravel&apos;s built-in functions.</p>
-<h4 id="1--before-initializing-app">1.  Before Initializing $app</h4>
-<p>In your <code>bootstrap/app.php</code>, after <code>&lt;?php</code>, add the following code.</p>
+<p>Add the following code:</p>
 <pre><code class="lang-php"><span class="hljs-comment">/*
 |--------------------------------------------------------------------------
 | Run The Shieldon Firewall
 |--------------------------------------------------------------------------
 |
 | Shieldon Firewall will watch all HTTP requests coming to your website.
-| Running Shieldon Firewall before initializing Laravel will avoid possible
-| conflicts with Laravel&apos;s built-in functions.
+| Running Shieldon Firewall before initializing Yii will avoid possible
+| conflicts with Yii&apos;s built-in functions.
 */</span>
 
 <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_SERVER[<span class="hljs-string">&apos;REQUEST_URI&apos;</span>])) {
 
     <span class="hljs-comment">// Notice that this directory must be writable.</span>
-    $firewallstorage = <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/../storage/shieldon&apos;</span>;
+    $firewallstorage = <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/../runtime/shieldon&apos;</span>;
 
     $firewall = <span class="hljs-keyword">new</span> \Shieldon\Firewall($firewallstorage);
     $firewall-&gt;restful();
@@ -970,17 +928,52 @@ conflicts with Laravel&apos;s built-in functions.</p>
 }
 </code></pre>
 <h4 id="2--define-a-route-for-firewall-panel">2.  Define a Route for Firewall Panel.</h4>
-<pre><code class="lang-php">Route::any(<span class="hljs-string">&apos;/your/secret/place/&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
-    $firewall = \Shieldon\Container::get(<span class="hljs-string">&apos;firewall&apos;</span>);
-    $controlPanel = <span class="hljs-keyword">new</span> \Shieldon\FirewallPanel($firewall);
-    $controlPanel-&gt;csrf(<span class="hljs-string">&apos;_token&apos;</span>, csrf_token());
-    $controlPanel-&gt;entry();
-});
+<p>Create a controller named <code>FirewallPanelController</code>. </p>
+<p>The content would be the code below:</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">app</span>\<span class="hljs-title">controllers</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">yii</span>\<span class="hljs-title">web</span>\<span class="hljs-title">Controller</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FirewallPanelController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">beforeAction</span><span class="hljs-params">($action)</span>
+    </span>{
+        $this-&gt;enableCsrfValidation = <span class="hljs-keyword">false</span>;
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">parent</span>::beforeAction($action);
+    }
+
+    <span class="hljs-comment">/**
+     * The entry point of the Firewall Panel.
+     *
+     * <span class="hljs-doctag">@return</span> string
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionIndex</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">// Get Firewall instance from Shieldon Container.</span>
+        $firewall = \Shieldon\Container::get(<span class="hljs-string">&apos;firewall&apos;</span>);
+
+        <span class="hljs-comment">// Get into the Firewall Panel.</span>
+        $controlPanel = <span class="hljs-keyword">new</span> \Shieldon\FirewallPanel($firewall);
+
+        $controlPanel-&gt;entry();
+        <span class="hljs-keyword">exit</span>;
+    }
+}
 </code></pre>
-<p>If you adopt this way, Shieldon Firewall will run in Global scope. But no worry, you can set up the exclusion list for the URLs you want Shieldon Firewall ignore them.</p>
+<p>Make sure that <code>enablePrettyUrl</code> is true in your <code>config/web.php</code></p>
+<pre><code class="lang-php"><span class="hljs-string">&apos;urlManager&apos;</span> =&gt; [
+    <span class="hljs-string">&apos;enablePrettyUrl&apos;</span> =&gt; <span class="hljs-keyword">true</span>,
+    <span class="hljs-string">&apos;showScriptName&apos;</span> =&gt; <span class="hljs-keyword">false</span>,
+    <span class="hljs-string">&apos;rules&apos;</span> =&gt; [
+    ],
+],
+</code></pre>
 <p>That&apos;s it.</p>
-<p>You can access the Firewall Panel by <code>/your/secret/place/</code>, to see the page, go to this URL in your browser.</p>
-<pre><code class="lang-bash">https://for.example.com/your/secret/place/
+<p>You can access the Firewall Panel by <code>/firewall-panel</code>, to see the page, go to this URL in your browser.</p>
+<pre><code class="lang-bash">https://for.example.com/firewall-panel
 </code></pre>
 <p>The default login is <code>shieldon_user</code> and <code>password</code> is <code>shieldon_pass</code>. After logging in the Firewall Panel, the first thing you need to do is to change the login and password.</p>
 <p>Shieldon Firewall will start watching your website if it get enabled in <code>Deamon</code> setting section, make sure you have set up the settings correctly.</p>
@@ -1011,12 +1004,12 @@ conflicts with Laravel&apos;s built-in functions.</p>
 
             
                 
-                <a href="../introduction.html" class="navigation navigation-prev " aria-label="Previous page: Firewall">
+                <a href="cakephp.html" class="navigation navigation-prev " aria-label="Previous page: CakePHP">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="symfony.html" class="navigation navigation-next " aria-label="Next page: Symfony">
+                <a href="zend.html" class="navigation navigation-next " aria-label="Next page: Zend">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1027,7 +1020,7 @@ conflicts with Laravel&apos;s built-in functions.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Laravel","level":"1.2.1","depth":2,"next":{"title":"Symfony","level":"1.2.2","depth":2,"path":"guide/symfony.md","ref":"guide/symfony.md","articles":[]},"previous":{"title":"Firewall","level":"1.2","depth":1,"path":"introduction.md","ref":"introduction.md","articles":[{"title":"Laravel","level":"1.2.1","depth":2,"path":"guide/laravel.md","ref":"guide/laravel.md","articles":[]},{"title":"Symfony","level":"1.2.2","depth":2,"path":"guide/symfony.md","ref":"guide/symfony.md","articles":[]},{"title":"CodeIgniter","level":"1.2.3","depth":2,"path":"guide/codeigniter.md","ref":"guide/codeigniter.md","articles":[]},{"title":"CakePHP","level":"1.2.4","depth":2,"path":"guide/cakephp.md","ref":"guide/cakephp.md","articles":[]},{"title":"Yii","level":"1.2.5","depth":2,"path":"guide/yii.md","ref":"guide/yii.md","articles":[]},{"title":"Zend","level":"1.2.6","depth":2,"path":"guide/zend.md","ref":"guide/zend.md","articles":[]},{"title":"Slim","level":"1.2.7","depth":2,"path":"guide/slim.md","ref":"guide/slim.md","articles":[]},{"title":"Fat-Free","level":"1.2.8","depth":2,"path":"guide/fatfree.md","ref":"guide/fatfree.md","articles":[]},{"title":"Fuel","level":"1.2.9","depth":2,"path":"guide/fuel.md","ref":"guide/fuel.md","articles":[]},{"title":"PHPixie","level":"1.2.10","depth":2,"path":"guide/phpixie.md","ref":"guide/phpixie.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["layout","toggle-chapters","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/terrylinooo/shieldon"},"search":{},"layout":{"footerPath":"_layouts/website_footer.html"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Shieldon - An anti-scraping PHP Library","language":"en","gitbook":"*"},"file":{"path":"guide/laravel.md","mtime":"2020-07-31T05:40:01.461Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-31T06:05:36.465Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Yii","level":"1.2.5","depth":2,"next":{"title":"Zend","level":"1.2.6","depth":2,"path":"guide/zend.md","ref":"guide/zend.md","articles":[]},"previous":{"title":"CakePHP","level":"1.2.4","depth":2,"path":"guide/cakephp.md","ref":"guide/cakephp.md","articles":[]},"dir":"ltr"},"config":{"plugins":["layout","toggle-chapters","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/terrylinooo/shieldon"},"search":{},"layout":{"footerPath":"_layouts/website_footer.html"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Shieldon - An anti-scraping PHP Library","language":"en","gitbook":"*"},"file":{"path":"guide/yii.md","mtime":"2020-07-31T05:41:10.393Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-31T06:05:36.465Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
