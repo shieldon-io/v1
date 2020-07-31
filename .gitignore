@@ -1,0 +1,10 @@
+.DS_Store
+.php_cs.cache
+.hg
+.vscode
+*.json
+*.sh
+/node_modules
+/my
+/_*
+/tmp
