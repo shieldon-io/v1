@@ -4,7 +4,7 @@ CodeIgniter is a light-weight MVC framework. I talk the CodeIgniter 3 first beca
 
 In this guide, I will share with you the tips for implementing Shieldon Firewall on your CodeIgniter application.
 
-![Firewall in CodeIgniter Framework](https://shieldon.io/images/home/codeigniter-framework-firewall.png)
+![Firewall in CodeIgniter Framework](https://i.imgur.com/3rjRSCl.png)
 
 ## Installation
 

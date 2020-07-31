@@ -4,7 +4,7 @@ Zend framework officially provides two types of skeleton - Zend MVC and Zend Exp
 
 No matter which skeleton you are using, this guide might give you some ideas on how to implement Shieldon Firewall, not sure which way is considered best practice to Zend, you can pick one you prefer.
 
-![Firewall in Zend Framework](https://shieldon.io/images/home/zend-framework-firewall.png)
+![Firewall in Zend Framework](https://i.imgur.com/4trrAuO.png)
 
 These ideas are:
 

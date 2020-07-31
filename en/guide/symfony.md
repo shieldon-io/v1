@@ -8,7 +8,7 @@ Symfony doesn't have a middleware concept, therefore you can create a parent con
 
 If you don't like to initialize Shieldon Firewall in a parent controller, here are the steps that called Bootstrap mode you can try.
 
-![Firewall in Symfony Framework](https://shieldon.io/images/home/symfony-framework-firewall.png)
+![Firewall in Symfony Framework](https://i.imgur.com/n41PrNc.png)
 
 ## Installation
 

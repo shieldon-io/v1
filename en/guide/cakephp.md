@@ -4,7 +4,7 @@ CakePHP is an open-source web framework, following the MVC approach, which is on
 
 This guide has been tested successfully in version `3.8`, I think it can be used older versions as well.
 
-![Firewall in CakePHP Framework](https://shieldon.io/images/home/cakephp-framework-firewall.png)
+![Firewall in CakePHP Framework](https://i.imgur.com/WDeJmID.png)
 
 ## Installation
 

@@ -2,7 +2,7 @@
 
 In this guide, I will give you some idea about how to implement Shieldon Firewall on your Yii application.
 
-![Firewall in Yii Framework](https://shieldon.io/images/home/yii-framework-firewall.png)
+![Firewall in Yii Framework](https://i.imgur.com/B0cSroN.png)
 
 
 ## Installation

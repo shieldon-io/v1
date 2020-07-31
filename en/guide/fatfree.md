@@ -2,7 +2,7 @@
 
 Not like other frameworks, Fat-Free is an extremely light-weight PHP framework.
 
-![Firewall in FatFree Framework](https://shieldon.io/images/home/fatfree-framework-firewall.png)
+![Firewall in FatFree Framework](https://i.imgur.com/wTvxl7A.png)
 
 ## Installation
 

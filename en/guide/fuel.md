@@ -2,7 +2,7 @@
 
 FuelPHP is a simple, flexible, community driven PHP web framework.
 
-![Firewall in Fuel Framework](https://shieldon.io/images/home/fuel-framework-firewall.png)
+![Firewall in Fuel Framework](https://i.imgur.com/sd322v8.png)
 
 ## Installation
 
