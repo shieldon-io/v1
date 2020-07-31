@@ -1,0 +1,881 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Implementing · Shieldon - An anti-scraping PHP Library</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-add-js-css/ed0a38ff2152a7fbe1c74a8b92a25470-my.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="firewall-introduction.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+  
+  
+
+  
+
+  
+  
+  
+
+<li class="chapter " data-level="1.1" data-path="./">
+  
+  <a href="./">
+    
+                    
+                    Shieldon
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.2" >
+  
+      <span>
+            
+                    
+                    Firewall
+            
+    </span>
+    
+
+    
+    <ul class="articles">
+      
+
+<li class="chapter " data-level="1.2.1" data-path="firewall-introduction.html">
+  
+  <a href="firewall-introduction.html">
+    
+                    
+                    Intoduction
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter active" data-level="1.2.2" data-path="firewall-implementation.html">
+  
+  <a href="firewall-implementation.html">
+    
+                    
+                    Implementing
+            
+    </a>
+    
+
+    
+</li>
+
+
+    </ul>
+    
+</li>
+
+<li class="chapter " data-level="1.3" >
+  
+      <span>
+            
+                    
+                    Shieldon Kernel for Developers
+            
+    </span>
+    
+
+    
+    <ul class="articles">
+      
+
+<li class="chapter " data-level="1.3.1" data-path="getting-started.html">
+  
+  <a href="getting-started.html">
+    
+                    
+                    Getting Started
+            
+    </a>
+    
+
+    
+    <ul class="articles">
+      
+
+<li class="chapter " data-level="1.3.1.1" data-path="getting-started.html">
+  
+  <a href="getting-started.html#installation">
+    
+                    
+                    Installation
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.1.2" data-path="getting-started.html">
+  
+  <a href="getting-started.html#how-to-use">
+    
+                    
+                    How to Use
+            
+    </a>
+    
+
+    
+</li>
+
+
+    </ul>
+    
+</li>
+
+<li class="chapter " data-level="1.3.2" data-path="configuration.html">
+  
+  <a href="configuration.html">
+    
+                    
+                    Configuration
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3" data-path="api.html">
+  
+  <a href="api.html">
+    
+                    
+                    API
+            
+    </a>
+    
+
+    
+    <ul class="articles">
+      
+
+<li class="chapter " data-level="1.3.3.1" data-path="api.html">
+  
+  <a href="api.html#setdriver">
+    
+                    
+                    setDriver
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.2" data-path="api.html">
+  
+  <a href="api.html#setcomponent">
+    
+                    
+                    setComponent
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.3" data-path="api.html">
+  
+  <a href="api.html#setproperty">
+    
+                    
+                    setProperty
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.4" data-path="api.html">
+  
+  <a href="api.html#setproperties">
+    
+                    
+                    setProperties
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.5" data-path="api.html">
+  
+  <a href="api.html#setchannel">
+    
+                    
+                    setChannel
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.6" data-path="api.html">
+  
+  <a href="api.html#setcaptcha">
+    
+                    
+                    setCaptcha
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.7" data-path="api.html">
+  
+  <a href="api.html#setfilters">
+    
+                    
+                    setFilters
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.8" data-path="api.html">
+  
+  <a href="api.html#setip">
+    
+                    
+                    setIp
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.9" data-path="api.html">
+  
+  <a href="api.html#outputjssnippet">
+    
+                    
+                    outputJsSnippet
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.10" data-path="api.html">
+  
+  <a href="api.html#captcharesponse">
+    
+                    
+                    captchaResponse
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.11" data-path="api.html">
+  
+  <a href="api.html#setview">
+    
+                    
+                    setView
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.12" data-path="api.html">
+  
+  <a href="api.html#createdatabase">
+    
+                    
+                    createDatabase
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.13" data-path="api.html">
+  
+  <a href="api.html#ban">
+    
+                    
+                    ban
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.14" data-path="api.html">
+  
+  <a href="api.html#unban">
+    
+                    
+                    unban
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.15" data-path="api.html">
+  
+  <a href="api.html#limitsession">
+    
+                    
+                    limitSession
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.3.16" data-path="api.html">
+  
+  <a href="api.html#run">
+    
+                    
+                    run
+            
+    </a>
+    
+
+    
+</li>
+
+
+    </ul>
+    
+</li>
+
+<li class="chapter " data-level="1.3.4" data-path="driver/">
+  
+  <a href="driver/">
+    
+                    
+                    Driver
+            
+    </a>
+    
+
+    
+    <ul class="articles">
+      
+
+<li class="chapter " data-level="1.3.4.1" data-path="driver/mysql.html">
+  
+  <a href="driver/mysql.html">
+    
+                    
+                    MySQL
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.4.2" data-path="driver/sqlite.html">
+  
+  <a href="driver/sqlite.html">
+    
+                    
+                    SQLite
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.4.3" data-path="driver/redis.html">
+  
+  <a href="driver/redis.html">
+    
+                    
+                    Redis
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.4.4" data-path="driver/file.html">
+  
+  <a href="driver/file.html">
+    
+                    
+                    File
+            
+    </a>
+    
+
+    
+</li>
+
+
+    </ul>
+    
+</li>
+
+<li class="chapter " data-level="1.3.5" data-path="component/">
+  
+  <a href="component/">
+    
+                    
+                    Component
+            
+    </a>
+    
+
+    
+    <ul class="articles">
+      
+
+<li class="chapter " data-level="1.3.5.1" data-path="component/trustedbot.html">
+  
+  <a href="component/trustedbot.html">
+    
+                    
+                    TrustedBot
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.5.2" data-path="component/ip.html">
+  
+  <a href="component/ip.html">
+    
+                    
+                    IP
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.5.3" data-path="component/useragent.html">
+  
+  <a href="component/useragent.html">
+    
+                    
+                    UserAgent
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.5.4" data-path="component/header.html">
+  
+  <a href="component/header.html">
+    
+                    
+                    Header
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.5.5" data-path="component/rdns.html">
+  
+  <a href="component/rdns.html">
+    
+                    
+                    Rdns
+            
+    </a>
+    
+
+    
+</li>
+
+
+    </ul>
+    
+</li>
+
+<li class="chapter " data-level="1.3.6" data-path="captcha/">
+  
+  <a href="captcha/">
+    
+                    
+                    CAPTCHA
+            
+    </a>
+    
+
+    
+    <ul class="articles">
+      
+
+<li class="chapter " data-level="1.3.6.1" data-path="captcha/recaptcha.html">
+  
+  <a href="captcha/recaptcha.html">
+    
+                    
+                    Google ReCaptcha
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.6.2" data-path="captcha/image.html">
+  
+  <a href="captcha/image.html">
+    
+                    
+                    Image Captcha
+            
+    </a>
+    
+
+    
+</li>
+
+
+    </ul>
+    
+</li>
+
+<li class="chapter " data-level="1.3.7" data-path="integration/">
+  
+  <a href="integration/">
+    
+                    
+                    Integration w/ Framework
+            
+    </a>
+    
+
+    
+    <ul class="articles">
+      
+
+<li class="chapter " data-level="1.3.7.1" data-path="integration/codeigniter.html">
+  
+  <a href="integration/codeigniter.html">
+    
+                    
+                    CodeIgniter
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.7.2" data-path="integration/slim.html">
+  
+  <a href="integration/slim.html">
+    
+                    
+                    Slim
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.7.3" data-path="integration/laravel.html">
+  
+  <a href="integration/laravel.html">
+    
+                    
+                    Laravel
+            
+    </a>
+    
+
+    
+</li>
+
+<li class="chapter " data-level="1.3.7.4" data-path="integration/wordpress.html">
+  
+  <a href="integration/wordpress.html">
+    
+                    
+                    WordPress
+            
+    </a>
+    
+
+    
+</li>
+
+
+    </ul>
+    
+</li>
+
+
+    </ul>
+    
+</li>
+
+<li class="chapter " data-level="1.4" data-path="wp-shieldon.html">
+  
+  <a href="wp-shieldon.html">
+    
+                    
+                    WordPress Plugin
+            
+    </a>
+    
+
+    
+</li>
+
+
+  
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Implementing</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>Here are the guides of integrating with the popular PHP frameworks.</p>
+<ul>
+<li><a href="guide/laravel.md">Laravel</a></li>
+<li><a href="https://shieldon.io/en/guide/symfony.md" target="_blank">Symfony</a></li>
+<li><a href="https://shieldon.io/en/guide/codeigniter.md" target="_blank">CodeIgniter</a></li>
+<li><a href="https://shieldon.io/en/guide/cakephp.md" target="_blank">CakePHP</a></li>
+<li><a href="https://shieldon.io/en/guide/yii.md" target="_blank">Yii</a></li>
+<li><a href="https://shieldon.io/en/guide/zend.md" target="_blank">Zend</a></li>
+<li><a href="https://shieldon.io/en/guide/slim.md" target="_blank">Slim</a></li>
+<li><a href="https://shieldon.io/en/guide/fatfree.md" target="_blank">Fat-Free</a></li>
+<li><a href="https://shieldon.io/en/guide/fuel.md" target="_blank">Fuel</a></li>
+<li><a href="https://shieldon.io/en/guide/phpixie.md" target="_blank">PHPixie</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="firewall-introduction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Intoduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Implementing","level":"1.2.2","depth":2,"next":{"title":"Shieldon Kernel for Developers","level":"1.3","depth":1,"ref":"","articles":[{"title":"Getting Started","level":"1.3.1","depth":2,"path":"getting-started.md","ref":"getting-started.md","articles":[{"title":"Installation","level":"1.3.1.1","depth":3,"anchor":"#installation","path":"getting-started.md","ref":"getting-started.md#installation","articles":[]},{"title":"How to Use","level":"1.3.1.2","depth":3,"anchor":"#how-to-use","path":"getting-started.md","ref":"getting-started.md#how-to-use","articles":[]}]},{"title":"Configuration","level":"1.3.2","depth":2,"path":"configuration.md","ref":"configuration.md","articles":[]},{"title":"API","level":"1.3.3","depth":2,"path":"api.md","ref":"api.md","articles":[{"title":"setDriver","level":"1.3.3.1","depth":3,"anchor":"#setdriver","path":"api.md","ref":"api.md#setdriver","articles":[]},{"title":"setComponent","level":"1.3.3.2","depth":3,"anchor":"#setcomponent","path":"api.md","ref":"api.md#setcomponent","articles":[]},{"title":"setProperty","level":"1.3.3.3","depth":3,"anchor":"#setproperty","path":"api.md","ref":"api.md#setproperty","articles":[]},{"title":"setProperties","level":"1.3.3.4","depth":3,"anchor":"#setproperties","path":"api.md","ref":"api.md#setproperties","articles":[]},{"title":"setChannel","level":"1.3.3.5","depth":3,"anchor":"#setchannel","path":"api.md","ref":"api.md#setchannel","articles":[]},{"title":"setCaptcha","level":"1.3.3.6","depth":3,"anchor":"#setcaptcha","path":"api.md","ref":"api.md#setcaptcha","articles":[]},{"title":"setFilters","level":"1.3.3.7","depth":3,"anchor":"#setfilters","path":"api.md","ref":"api.md#setfilters","articles":[]},{"title":"setIp","level":"1.3.3.8","depth":3,"anchor":"#setip","path":"api.md","ref":"api.md#setip","articles":[]},{"title":"outputJsSnippet","level":"1.3.3.9","depth":3,"anchor":"#outputjssnippet","path":"api.md","ref":"api.md#outputjssnippet","articles":[]},{"title":"captchaResponse","level":"1.3.3.10","depth":3,"anchor":"#captcharesponse","path":"api.md","ref":"api.md#captcharesponse","articles":[]},{"title":"setView","level":"1.3.3.11","depth":3,"anchor":"#setview","path":"api.md","ref":"api.md#setview","articles":[]},{"title":"createDatabase","level":"1.3.3.12","depth":3,"anchor":"#createdatabase","path":"api.md","ref":"api.md#createdatabase","articles":[]},{"title":"ban","level":"1.3.3.13","depth":3,"anchor":"#ban","path":"api.md","ref":"api.md#ban","articles":[]},{"title":"unban","level":"1.3.3.14","depth":3,"anchor":"#unban","path":"api.md","ref":"api.md#unban","articles":[]},{"title":"limitSession","level":"1.3.3.15","depth":3,"anchor":"#limitsession","path":"api.md","ref":"api.md#limitsession","articles":[]},{"title":"run","level":"1.3.3.16","depth":3,"anchor":"#run","path":"api.md","ref":"api.md#run","articles":[]}]},{"title":"Driver","level":"1.3.4","depth":2,"path":"driver/index.md","ref":"driver/index.md","articles":[{"title":"MySQL","level":"1.3.4.1","depth":3,"path":"driver/mysql.md","ref":"driver/mysql.md","articles":[]},{"title":"SQLite","level":"1.3.4.2","depth":3,"path":"driver/sqlite.md","ref":"driver/sqlite.md","articles":[]},{"title":"Redis","level":"1.3.4.3","depth":3,"path":"driver/redis.md","ref":"driver/redis.md","articles":[]},{"title":"File","level":"1.3.4.4","depth":3,"path":"driver/file.md","ref":"driver/file.md","articles":[]}]},{"title":"Component","level":"1.3.5","depth":2,"path":"component/index.md","ref":"component/index.md","articles":[{"title":"TrustedBot","level":"1.3.5.1","depth":3,"path":"component/trustedbot.md","ref":"component/trustedbot.md","articles":[]},{"title":"IP","level":"1.3.5.2","depth":3,"path":"component/ip.md","ref":"component/ip.md","articles":[]},{"title":"UserAgent","level":"1.3.5.3","depth":3,"path":"component/useragent.md","ref":"component/useragent.md","articles":[]},{"title":"Header","level":"1.3.5.4","depth":3,"path":"component/header.md","ref":"component/header.md","articles":[]},{"title":"Rdns","level":"1.3.5.5","depth":3,"path":"component/rdns.md","ref":"component/rdns.md","articles":[]}]},{"title":"CAPTCHA","level":"1.3.6","depth":2,"path":"captcha/index.md","ref":"captcha/index.md","articles":[{"title":"Google ReCaptcha","level":"1.3.6.1","depth":3,"path":"captcha/recaptcha.md","ref":"captcha/recaptcha.md","articles":[]},{"title":"Image Captcha","level":"1.3.6.2","depth":3,"path":"captcha/image.md","ref":"captcha/image.md","articles":[]}]},{"title":"Integration w/ Framework","level":"1.3.7","depth":2,"path":"integration/index.md","ref":"integration/index.md","articles":[{"title":"CodeIgniter","level":"1.3.7.1","depth":3,"path":"integration/codeigniter.md","ref":"integration/codeigniter.md","articles":[]},{"title":"Slim","level":"1.3.7.2","depth":3,"path":"integration/slim.md","ref":"integration/slim.md","articles":[]},{"title":"Laravel","level":"1.3.7.3","depth":3,"path":"integration/laravel.md","ref":"integration/laravel.md","articles":[]},{"title":"WordPress","level":"1.3.7.4","depth":3,"path":"integration/wordpress.md","ref":"integration/wordpress.md","articles":[]}]}]},"previous":{"title":"Intoduction","level":"1.2.1","depth":2,"path":"firewall-introduction.md","ref":"firewall-introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["layout","toggle-chapters","github","add-js-css"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/terrylinooo/shieldon"},"search":{},"layout":{"footerPath":"_layouts/website_footer.html"},"add-js-css":{"js":["./my/my.js"],"css":["./my/my.css"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Shieldon - An anti-scraping PHP Library","language":"en","gitbook":"*"},"file":{"path":"firewall-implementation.md","mtime":"2020-07-31T03:49:23.796Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-31T04:53:40.466Z"},"basePath":".","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-add-js-css/f8cac592459933d5c7389aa4b641926e-my.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
